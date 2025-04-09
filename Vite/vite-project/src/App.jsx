@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useSelector, useDispatch } from 'react-redux';
+import { signInWithEmail, signInWithGoogle, signOut } from './store/slices/authSlice';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const dispatch = useDispatch();
+  const { user, loading, error } = useSelector((state) => state.auth);
+
+  const handleEmailSignIn = () => {
+    const email = prompt('Enter your email:');
+    const password = prompt('Enter your password:');
+    dispatch(signInWithEmail({ email, password }));
+  };
+
+  const handleGoogleSignIn = () => {
+    dispatch(signInWithGoogle());
+  };
+
+  const handleSignOut = () => {
+    dispatch(signOut());
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <h1>Autenticación con Firebase</h1>
+      {loading && <p>Cargando...</p>}
+      {error && <p>Error: {error}</p>}
+      {user ? (
+        <div>
+          <p>Bienvenido, {user.displayName || user.email}</p>
+          <button onClick={handleSignOut}>Cerrar sesión</button>
+        </div>
+      ) : (
+        <div>
+          <p>No has iniciado sesión</p>
+          <button onClick={handleEmailSignIn}>Iniciar sesión con Email</button>
+          <button onClick={handleGoogleSignIn}>Iniciar sesión con Google</button>
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
