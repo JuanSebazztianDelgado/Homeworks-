@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { signInWithEmail, signInWithGoogle, signOut } from './store/slices/authSlice';
+import { signInWithEmail, signInWithGoogle, signOut } from './src/store/slices/authSlice';
+import Crud from './components/Crud'; 
 import './App.css';
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
         <div>
           <p>Bienvenido, {user.displayName || user.email}</p>
           <button onClick={handleSignOut}>Cerrar sesión</button>
+          {/* Mostrar el componente Crud si el usuario está autenticado */}
+          <Crud />
         </div>
       ) : (
         <div>
