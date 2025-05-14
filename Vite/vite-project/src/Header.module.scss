@@ -1,0 +1,11 @@
+$background-color: #282828;
+$text-color: #ffffff;
+
+.header {
+  background-color: $background-color;
+  color: $text-color;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
