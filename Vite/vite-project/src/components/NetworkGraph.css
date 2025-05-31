@@ -1,0 +1,153 @@
+.network-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.network-header {
+  background: linear-gradient(135deg, #38a169, #2f855a);
+  color: white;
+  padding: 1.5rem 2rem;
+  text-align: center;
+}
+
+.network-header h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.network-header p {
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
+.network-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  background: #f7fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 0.75rem 1.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 80px;
+}
+
+.stat-card h3 {
+  font-size: 0.8rem;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.stat-card span {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #38a169;
+}
+
+.network-graph {
+  flex: 1;
+  background: #f8fafc;
+  position: relative;
+}
+
+.network-legend {
+  background: #f7fafc;
+  padding: 1rem 2rem;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.legend-node {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #4a90e2;
+  border: 2px solid #2c5282;
+}
+
+.legend-edge {
+  width: 24px;
+  height: 2px;
+  background: #718096;
+  position: relative;
+}
+
+.legend-edge::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: -2px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid #718096;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+
+.no-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #718096;
+  text-align: center;
+  padding: 2rem;
+}
+
+.no-data h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #4a5568;
+}
+
+@media (max-width: 768px) {
+  .network-container {
+    height: 75vh;
+  }
+  
+  .network-header {
+    padding: 1rem;
+  }
+  
+  .network-header h2 {
+    font-size: 1.4rem;
+  }
+  
+  .network-stats {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .network-legend {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+}
